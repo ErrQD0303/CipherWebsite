@@ -1,0 +1,21 @@
+/* InputWithLabel.module.css */
+.labelledInput {
+  margin-bottom: 1.6rem;
+  overflow: hidden;
+}
+
+.labelledInput label,
+.labelledInput textarea {
+  display: inline-block;
+  font-size: 1.6rem;
+}
+
+.labelledInput label {
+  margin-right: 1rem; /* Adjust this margin as needed */
+}
+
+.labelledInput textarea {
+  width: calc(100% - 110px); /* Adjust width calculation as needed */
+  float: right;
+  resize: none;
+}

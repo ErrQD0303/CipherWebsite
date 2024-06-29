@@ -1,0 +1,19 @@
+/* InputWithLabel.module.css */
+.labelledInput {
+  overflow: hidden;
+  margin-bottom: 1.6rem;
+}
+
+.labelledInput label {
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 1rem; /* Adjust this margin as needed */
+  font-size: 1.6rem;
+}
+
+.labelledInput input {
+  display: inline-block;
+  vertical-align: middle;
+  width: calc(100% - 11rem); /* Adjust width calculation as needed */
+  float: right;
+}
