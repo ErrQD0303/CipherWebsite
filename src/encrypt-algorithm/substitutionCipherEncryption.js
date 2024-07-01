@@ -1,4 +1,4 @@
-export function getCipherEncryptionText(plaintext, key) {
+export function getSubstitutionCipherEncryptionText(plaintext, key) {
   const ciphertext = [...plaintext].reduce(function (acc, value) {
     let charCode = value.charCodeAt(0);
     charCode = charCode < 97 ? charCode - 65 : charCode - 97 + 26;
@@ -9,7 +9,7 @@ export function getCipherEncryptionText(plaintext, key) {
   return ciphertext;
 }
 
-export function getCipherEncryptionKey() {
+export function getSubstitutionCipherEncryptionKey() {
   const key = Array.from({ length: 52 }, (v, i) => {
     const character = String.fromCharCode(
       i < 26 ? "A".charCodeAt(0) + i : +"a".charCodeAt(0) + (i % 26)
@@ -26,4 +26,13 @@ export function getCipherEncryptionKey() {
   });
 
   return key;
+}
+
+export function getSubstitutionCipherPlainText(ciphertext, key) {
+  const plaintext = [...ciphertext].reduce(function (acc, value) {
+    const originalChar = key.filter((val) => val[1] === value)[0][0];
+    return acc + originalChar;
+  }, "");
+
+  return plaintext;
 }

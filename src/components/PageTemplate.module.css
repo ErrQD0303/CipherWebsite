@@ -1,0 +1,13 @@
+.formContainer {
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.5s ease;
+}
+
+.formContainer :global(.plaintext.decrypt) {
+  order: 1;
+}
+
+.formContainer :global(.ciphertext.decrypt) {
+  order: -1;
+}

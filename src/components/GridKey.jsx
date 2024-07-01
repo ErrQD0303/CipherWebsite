@@ -1,7 +1,9 @@
+import { useApp } from "../contexts/AppContext";
 import styles from "./GridKey.module.css";
 
-function GridKey({ keyTable }) {
-  console.log(keyTable);
+function GridKey() {
+  const { key: keyTable } = useApp();
+
   return (
     <div className={styles.keyTable}>
       {keyTable.map(function ([ori, modi]) {

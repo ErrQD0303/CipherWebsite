@@ -2,6 +2,7 @@
 .labelledInput {
   margin-bottom: 1.6rem;
   overflow: hidden;
+  transition: transform 0.5s ease, order 0.5s ease;
 }
 
 .labelledInput label,
