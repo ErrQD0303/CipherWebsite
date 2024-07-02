@@ -1,17 +1,18 @@
 import { useApp } from "../contexts/AppContext";
-import { getSubstitutionCipherEncryptionKey } from "./../encrypt-algorithm/substitutionCipherEncryption";
+import { getKey } from "../encrypt-algorithm/algorithm";
 import GridKey from "./../components/GridKey";
 
 import styles from "./SubstitutionCipher.module.css";
 import PageTemplate from "../components/PageTemplate";
+import { useEffect } from "react";
 
 function SubstitutionCipher() {
-  const { dispatch, key } = useApp();
+  const { dispatch, key, encryptions, selectedEncryption } = useApp();
 
   function handleGetKey() {
     dispatch({
       type: "setKey",
-      payload: getSubstitutionCipherEncryptionKey(),
+      payload: getKey(encryptions?.[selectedEncryption].name),
     });
   }
 

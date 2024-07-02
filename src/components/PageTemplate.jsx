@@ -4,8 +4,10 @@ import { useApp } from "./../contexts/AppContext";
 import LabelledTextBox from "./LabelledTextBox";
 import Switch from "./Switch";
 import { getCiphertext, getPlaintext } from "./../encrypt-algorithm/algorithm";
+import { useNavigate } from "react-router-dom";
 
 function PageTemplate({ children }) {
+  const navigate = useNavigate();
   const {
     dispatch,
     key,
@@ -32,6 +34,31 @@ function PageTemplate({ children }) {
     [dispatch]
   );
 
+  useEffect(
+    function () {
+      if (encryptions.length === 0) return;
+
+      const { pathname } = location;
+      const algorithmName = pathname
+        .slice(1)
+        .match(/[a-z-]*(?=\/?)/)
+        .at(0)
+        .replace(/-/g, " ");
+
+      const currentPageIdx = encryptions.findIndex(
+        (value) => value.name.toLowerCase() === algorithmName
+      );
+
+      if (currentPageIdx === -1) return;
+
+      dispatch({
+        type: "setSelectedEncryption",
+        payload: currentPageIdx,
+      });
+    },
+    [encryptions, dispatch]
+  );
+
   function handleInputPlaintext(e) {
     dispatch({
       type: "setPlaintext",
@@ -51,6 +78,11 @@ function PageTemplate({ children }) {
       type: "setSelectedEncryption",
       payload: Number(e.target.value),
     });
+    navigate(
+      `/${encryptions[Number(e.target.value)].name
+        .replaceAll(" ", "-")
+        .toLowerCase()}`
+    );
   }
 
   function handleSubmit(e) {

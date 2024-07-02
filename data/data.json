@@ -2,6 +2,9 @@
   "encryptions": [
     {
       "name": "Substitution Cipher"
+    },
+    {
+      "name": "Vigenere Cipher"
     }
   ]
 }

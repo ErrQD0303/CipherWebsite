@@ -7,7 +7,7 @@ const initialValue = {
   ciphertext: "",
   selectedEncryption: 0,
   encryptions: [],
-  key: null,
+  key: undefined,
   shouldEncrypt: true,
 };
 
@@ -27,7 +27,9 @@ function reducer(state, action) {
       };
     case "setSelectedEncryption":
       return {
-        ...state,
+        ...initialValue,
+        encryptions: state.encryptions,
+        plaintext: state.plaintext,
         selectedEncryption: action.payload,
       };
     case "setKey":
